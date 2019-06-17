@@ -1,0 +1,243 @@
+// This is the current inline policy attached to the "CodeStarWorker-<project name>-CloudFormation" IAM role when using the Lambda template
+{
+    "Statement": [
+        {
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:s3:::aws-codestar-REGION-YOUR-ACCOUNT-ID-PROJECT-NAME-pipe",
+                "arn:aws:s3:::aws-codestar-REGION-YOUR-ACCOUNT-ID-PROJECT-NAME-pipe/*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "apigateway:DELETE",
+                "apigateway:GET",
+                "apigateway:PATCH",
+                "apigateway:POST",
+                "apigateway:PUT",
+                "codedeploy:CreateApplication",
+                "codedeploy:CreateDeployment",
+                "codedeploy:CreateDeploymentConfig",
+                "codedeploy:CreateDeploymentGroup",
+                "codedeploy:DeleteApplication",
+                "codedeploy:DeleteDeployment",
+                "codedeploy:DeleteDeploymentConfig",
+                "codedeploy:DeleteDeploymentGroup",
+                "codedeploy:GetDeployment",
+                "codedeploy:GetDeploymentConfig",
+                "codedeploy:GetDeploymentGroup",
+                "codedeploy:RegisterApplicationRevision",
+                "codestar:SyncResources",
+                "config:DeleteConfigRule",
+                "config:DescribeConfigRules",
+                "config:ListTagsForResource",
+                "config:PutConfigRule",
+                "config:TagResource",
+                "config:UntagResource",
+                "dynamodb:CreateTable",
+                "dynamodb:DeleteTable",
+                "dynamodb:DescribeContinuousBackups",
+                "dynamodb:DescribeTable",
+                "dynamodb:DescribeTimeToLive",
+                "dynamodb:ListTagsOfResource",
+                "dynamodb:TagResource",
+                "dynamodb:UntagResource",
+                "dynamodb:UpdateContinuousBackups",
+                "dynamodb:UpdateTable",
+                "dynamodb:UpdateTimeToLive",
+                "ec2:AssociateIamInstanceProfile",
+                "ec2:AttachVolume",
+                "ec2:CreateSecurityGroup",
+                "ec2:createTags",
+                "ec2:DescribeIamInstanceProfileAssociations",
+                "ec2:DescribeInstances",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DetachVolume",
+                "ec2:DisassociateIamInstanceProfile",
+                "ec2:ModifyInstanceAttribute",
+                "ec2:ModifyInstanceCreditSpecification",
+                "ec2:ModifyInstancePlacement",
+                "ec2:MonitorInstances",
+                "ec2:ReplaceIamInstanceProfileAssociation",
+                "ec2:RunInstances",
+                "ec2:StartInstances",
+                "ec2:StopInstances",
+                "ec2:TerminateInstances",
+                "events:DeleteRule",
+                "events:DescribeRule",
+                "events:ListTagsForResource",
+                "events:PutRule",
+                "events:PutTargets",
+                "events:RemoveTargets",
+                "events:TagResource",
+                "events:UntagResource",
+                "kinesis:AddTagsToStream",
+                "kinesis:CreateStream",
+                "kinesis:DecreaseStreamRetentionPeriod",
+                "kinesis:DeleteStream",
+                "kinesis:DescribeStream",
+                "kinesis:IncreaseStreamRetentionPeriod",
+                "kinesis:RemoveTagsFromStream",
+                "kinesis:StartStreamEncryption",
+                "kinesis:StopStreamEncryption",
+                "kinesis:UpdateShardCount",
+                "lambda:CreateAlias",
+                "lambda:CreateFunction",
+                "lambda:DeleteAlias",
+                "lambda:DeleteFunction",
+                "lambda:DeleteFunctionConcurrency",
+                "lambda:GetFunction",
+                "lambda:GetFunctionConfiguration",
+                "lambda:ListTags",
+                "lambda:ListVersionsByFunction",
+                "lambda:PublishVersion",
+                "lambda:PutFunctionConcurrency",
+                "lambda:TagResource",
+                "lambda:UntagResource",
+                "lambda:UpdateAlias",
+                "lambda:UpdateFunctionCode",
+                "lambda:UpdateFunctionConfiguration",
+                "s3:CreateBucket",
+                "s3:DeleteBucket",
+                "s3:DeleteBucketWebsite",
+                "s3:PutAccelerateConfiguration",
+                "s3:PutAnalyticsConfiguration",
+                "s3:PutBucketAcl",
+                "s3:PutBucketCORS",
+                "s3:PutBucketLogging",
+                "s3:PutBucketNotification",
+                "s3:PutBucketPublicAccessBlock",
+                "s3:PutBucketVersioning",
+                "s3:PutBucketWebsite",
+                "s3:PutEncryptionConfiguration",
+                "s3:PutInventoryConfiguration",
+                "s3:PutLifecycleConfiguration",
+                "s3:PutMetricsConfiguration",
+                "s3:PutReplicationConfiguration",
+                "sns:CreateTopic",
+                "sns:DeleteTopic",
+                "sns:GetTopicAttributes",
+                "sns:ListSubscriptionsByTopic",
+                "sns:ListTopics",
+                "sns:SetSubscriptionAttributes",
+                "sns:Subscribe",
+                "sns:Unsubscribe",
+                "sqs:CreateQueue",
+                "sqs:DeleteQueue",
+                "sqs:GetQueueAttributes",
+                "sqs:GetQueueUrl",
+                "sqs:ListQueueTags",
+                "sqs:TagQueue",
+                "sqs:UntagQueue"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "lambda:AddPermission",
+                "lambda:RemovePermission"
+            ],
+            "Resource": [
+                "arn:aws:lambda:REGION:YOUR-ACCOUNT-ID:function:awscodestar-*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::YOUR-ACCOUNT-ID:role/CodeStar-PROJECT-NAME*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "codedeploy.amazonaws.com"
+                }
+            },
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::YOUR-ACCOUNT-ID:role/CodeStarWorker-PROJECT-NAME-CodeDeploy"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "cloudformation:CreateChangeSet"
+            ],
+            "Resource": [
+                "arn:aws:cloudformation:REGION:aws:transform/Serverless-2016-10-31",
+                "arn:aws:cloudformation:REGION:aws:transform/CodeStar"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "iam:CreateServiceLinkedRole",
+                "iam:GetRole",
+                "iam:DeleteRole",
+                "iam:DeleteUser"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Condition": {
+                "StringEquals": {
+                    "iam:PermissionsBoundary": "arn:aws:iam::YOUR-ACCOUNT-ID:policy/CodeStar_PROJECT-NAME_PermissionsBoundary"
+                }
+            },
+            "Action": [
+                "iam:AttachRolePolicy",
+                "iam:AttachUserPolicy",
+                "iam:CreateRole",
+                "iam:CreateUser",
+                "iam:DeleteRolePolicy",
+                "iam:DeleteUserPolicy",
+                "iam:DetachUserPolicy",
+                "iam:DetachRolePolicy",
+                "iam:PutUserPermissionsBoundary",
+                "iam:PutRolePermissionsBoundary"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "kms:CreateKey",
+                "kms:CreateAlias",
+                "kms:DeleteAlias",
+                "kms:DisableKey",
+                "kms:EnableKey",
+                "kms:UpdateAlias",
+                "kms:TagResource",
+                "kms:UntagResource"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Condition": {
+                "StringEquals": {
+                    "ssm:ResourceTag/awscodestar:projectArn": "arn:aws:codestar:REGION:YOUR-ACCOUNT-ID:project/PROJECT-NAME"
+                }
+            },
+            "Action": [
+                "ssm:GetParameter*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}

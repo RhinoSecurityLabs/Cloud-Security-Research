@@ -1,0 +1,155 @@
+// This policy used to be attached to the IAM role "CodeStarWorker-PROJECTNAME-CloudFormation"
+{
+    "Statement": [
+        {
+            "Action": [
+                "acm:*",
+                "apigateway:*",
+                "application-autoscaling:*",
+                "appsync:*",
+                "athena:*",
+                "autoscaling:*",
+                "autoscaling-plans:*",
+                "batch:*",
+                "cloudfront:*",
+                "cloudtrail:*",
+                "cloudwatch:*",
+                "codedeploy:*",
+                "codestar:*",
+                "cognito-idp:*",
+                "cognito-identity:*",
+                "cognito-sync:*",
+                "config:*",
+                "datapipeline:*",
+                "dax:*",
+                "discovery:*",
+                "dms:*",
+                "ds:*",
+                "dynamodb:*",
+                "ec2:*",
+                "ecr:*",
+                "ecs:*",
+                "eks:*",
+                "elasticache:*",
+                "elasticbeanstalk:*",
+                "elasticfilesystem:*",
+                "elasticloadbalancing:*",
+                "elasticmapreduce:*",
+                "es:*",
+                "events:*",
+                "firehose:*",
+                "gamelift:*",
+                "glue:*",
+                "guardduty:*",
+                "inspector:*",
+                "iot:*",
+                "kinesis:*",
+                "kinesisanalytics:*",
+                "lambda:*",
+                "logs:*",
+                "mq:*",
+                "opsworks:*",
+                "rds:*",
+                "redshift:*",
+                "route53:*",
+                "s3:*",
+                "sagemaker:*",
+                "sdb:*",
+                "servicecatalog:*",
+                "ses:*",
+                "sns:*",
+                "sqs:*",
+                "states:*",
+                "waf:*",
+                "waf-regional:*",
+                "workspaces:*"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "cloudformation:CreateChangeSet"
+            ],
+            "Resource": [
+                "arn:aws:cloudformation:REGION:aws:transform/Serverless-2016-10-31",
+                "arn:aws:cloudformation:REGION:aws:transform/CodeStar"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::YOUR-ACCOUNT-ID:role/CodeStar-PROJECT-NAME*",
+                "arn:aws:iam::YOUR-ACCOUNT-ID:role/CodeStarWorker-PROJECT-NAME-WebApp"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "iam:GetRole",
+                "iam:DeleteRole",
+                "iam:DeleteRolePolicy",
+                "iam:AttachRolePolicy",
+                "iam:DetachRolePolicy",
+                "iam:DeleteUser",
+                "iam:DeleteUserPolicy",
+                "iam:AttachUserPolicy",
+                "iam:DetachUserPolicy",
+                "iam:CreateInstanceProfile",
+                "iam:RemoveRoleFromInstanceProfile",
+                "iam:PutRolePolicy",
+                "iam:DeleteInstanceProfile",
+                "iam:AddRoleToInstanceProfile",
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Condition": {
+                "StringEquals": {
+                    "iam:PermissionsBoundary": "arn:aws:iam::YOUR-ACCOUNT-ID:policy/CodeStar_PROJECT-NAME_PermissionsBoundary"
+                }
+            },
+            "Action": [
+                "iam:CreateRole",
+                "iam:CreateUser",
+                "iam:PutUserPermissionsBoundary",
+                "iam:PutRolePermissionsBoundary"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "kms:CreateKey",
+                "kms:CreateAlias",
+                "kms:DeleteAlias",
+                "kms:DisableKey",
+                "kms:EnableKey",
+                "kms:UpdateAlias",
+                "kms:TagResource",
+                "kms:UntagResource"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Condition": {
+                "StringEquals": {
+                    "ssm:ResourceTag/awscodestar:projectArn": "arn:aws:codestar:REGION:YOUR-ACCOUNT-ID:project/PROJECT-NAME"
+                }
+            },
+            "Action": [
+                "ssm:GetParameter*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
