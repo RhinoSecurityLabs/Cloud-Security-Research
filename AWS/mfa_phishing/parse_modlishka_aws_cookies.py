@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Usage: ./parse_modlishka_aws_cookies.py modlishka.log myphishingdomain.com
+
 import sys
 
 phishing_domain = sys.argv[2]
