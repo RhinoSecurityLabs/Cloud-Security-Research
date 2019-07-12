@@ -488,3 +488,6 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/osx,vim,linux,macos,windows,sublimetext,visualstudio,visualstudiocode
+
+# CSV output
+all_privesc_scan_results_*
