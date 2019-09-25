@@ -1,5 +1,5 @@
 # GCP Cloud Shell Docker Escape
-This allows anyone to access the host VM that is running the Cloud Shell Docker container as the root user. Just run one of the following commands from within your GCP Cloud Shell to escape it.
+This allows anyone to access the host VM that is running the Cloud Shell Docker container as the root user. Just run one of the following commands from within your GCP Cloud Shell to escape it. This was originally reported to Google Security and it was determined to not be a security risk. The host is isolated from other GCP users and as of recently they even let you use your own Docker container (based off of Cloud Shell) for your own Cloud Shell, so the escape is working as intended.
 
 ## v1 (The original version)
 *Source:* https://twitter.com/SpenGietz/status/1166752505889316864
