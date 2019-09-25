@@ -8,7 +8,7 @@ This allows anyone to access the host VM that is running the Cloud Shell Docker 
 
 ![Example of the original Docker escape](./images/EscapeExample.jpg)  
 
-**Note:** It was pointed out by another user on Twitter (@Quintus23M) that the command above is not actually a full Docker escape. It essentially mounts the host file system within the container, giving you access to the host, but not giving you full root access to it. That user kindly responded with an alternative command to fully escape the container and be the root user on the host VM (v2 below).  
+**Note:** It was pointed out by another user on Twitter ([@Quintus23M](https://twitter.com/Quintus23M)) that the command above is not actually a full Docker escape. It essentially mounts the host file system within the container, giving you access to the host, but not giving you full root access to it. That user kindly responded with an alternative command to fully escape the container and be the root user on the host VM (v2 below).  
 
 ## V2 (The better version)
 **Source:** https://twitter.com/Quintus23M/status/1166828814091112449  
