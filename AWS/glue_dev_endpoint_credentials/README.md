@@ -5,6 +5,6 @@ Most of the EC2 metadata API is disabled in AWS Glue Development Endpoints, but 
 
 From within a Glue Development Endpoint, run the following command: `curl http://169.254.169.254/latest/meta-data/iam/security-credentials/dummy`  
 
-You will get returned the keys belonging to whatever role is attached to that Development Endpoint! The following screenshot shows that the typical `/latest/meta-data/` endpoint returns a 404, but the IAM credentials endpoint still works when using the hardcoded name `dummy`.  
+You will get returned the keys belonging to whatever role is attached to that Development Endpoint! The following screenshot shows that the typical `/latest/meta-data/` endpoint returns a 404, but the IAM credentials endpoint still works when using the hardcoded name `dummy` (regardless of what the actual role is named).  
 
 ![Glue metadata example](./images/ExampleGlueMetadata.jpg)  
