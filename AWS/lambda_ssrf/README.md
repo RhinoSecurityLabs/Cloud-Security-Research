@@ -13,5 +13,5 @@ Got RCE or SSRF inside an AWS Lambda function? Request "localhost:9001/2018-06-0
 
 ## Other Useful Tips  
 - Look at the HTTP headers returned from the Lambda runtime API if you are able to for a little bit more information.  
-- Don't forget to pull the AWS keys from the function's environment variables if you are able to (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN)!  
+- Don't forget to pull the AWS keys from the function's environment variables if you are able to (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN`)!  
 - Got local file read? Read `/proc/self/environ` for the environment variables of the function (including the AWS keys).  
