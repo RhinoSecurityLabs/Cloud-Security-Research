@@ -5,7 +5,7 @@ There are two AWS GuardDuty finding types that trigger when a CloudTrail trail i
 
 This means we cannot use the `cloudtrail:DeleteTrail`, `cloudtrail:UpdateTrail`, or `cloudtrail:StopLogging` APIs without getting caught shortly after.
 
-To get around this, we can use the `cloudtrail:PutEventSelectors` API and configure the event selectors in a way that nothing besides KMS events are logged. Before KMS events were introduced, it was possible to completely disable a trail with this method, but now we need to leave KMS events enabled. This shouldn't be a big deal and will miss most of your activity.
+To get around this, we can use the `cloudtrail:PutEventSelectors` API and configure the event selectors in a way that nothing besides KMS events are logged. Before KMS events were introduced, it was possible to completely disable a trail with this method, but now we need to leave KMS events enabled. This shouldn't be a big deal and still will not log most of your activity.
 
 We can abuse this with the following command:
 
@@ -32,4 +32,6 @@ The `eventselectors.json` file should have the following contents:
 ]
 ```
 
-This configuration instructs the trail to ignore management events and data events. If the "DataResources" field was an empty array, our API call would be denied, but by specifying S3 buckets and Lambda functions, even though they are empty, we can bypass the error. This configuration does not disable KMS management events because that's not possible with what we want to do, but those types of events should not be the reason you get caught. Note that this does not work through the web console and must be done through the AWS CLI/API.
+This configuration instructs the trail to ignore management events and data events. If the "DataResources" field was an empty array, our API call would be denied, but by specifying S3 buckets and Lambda functions, even though they are empty, we can bypass the error. This configuration does not disable KMS management events because that's not possible with what we want to do, but those types of events should not be the reason you get caught. 
+
+Note that this does not work through the web console because of some validation in place that the CLI does not seem to follow.
