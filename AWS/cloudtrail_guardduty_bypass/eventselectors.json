@@ -1,0 +1,1 @@
+[{"ReadWriteType":"ReadOnly","IncludeManagementEvents":false,"DataResources":[{"Type":"AWS::S3::Object","Values":[]},{"Type":"AWS::Lambda::Function","Values":[]}]}]
